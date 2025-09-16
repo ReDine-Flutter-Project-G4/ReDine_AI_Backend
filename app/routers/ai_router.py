@@ -1,11 +1,14 @@
 from fastapi import APIRouter, UploadFile, File
 from ultralytics import YOLO
 from PIL import Image
+from pathlib import Path
 import io
 
 ai_router = APIRouter(prefix="/api/ai", tags=["AI"])
 
-model = YOLO("/Users/snudhana/Documents/CS@SIT/year_2/ReDine/redine_ai_backend/app/models/ReDine_AI_Model.pt")
+root = Path(__file__).resolve().parent.parent
+model_path = root / "app" / "models" / "ReDine_AI_Model.pt"
+model = YOLO(model_path)
 
 @ai_router.post("/ingredients/detect")
 async def detect_ingredients(file: UploadFile = File(...)):
