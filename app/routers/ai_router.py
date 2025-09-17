@@ -17,15 +17,15 @@ async def detect_ingredients(file: UploadFile = File(...)):
 
     results = model(image)
     
-    ingredients_list = []
+    ingredients_list = set()
     for result in results:
         boxes = result.boxes
         for box in boxes:
             cls = int(box.cls[0])
             class_name = model.names[cls]
-            ingredients_list.append(class_name)
+            ingredients_list.add(class_name)
 
-    return {"detected_ingredients": ingredients_list}
+    return {"detected_ingredients": list(ingredients_list)}
 
 @ai_router.get("/test")
 async def test_endpoint():
