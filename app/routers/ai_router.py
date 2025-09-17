@@ -7,7 +7,7 @@ import io
 ai_router = APIRouter(prefix="/api/ai", tags=["AI"])
 
 root = Path(__file__).resolve().parent.parent
-model_path = root / "app" / "models" / "ReDine_AI_Model.pt"
+model_path = root / "models" / "ReDine_AI_Model.pt"
 model = YOLO(model_path)
 
 @ai_router.post("/ingredients/detect")
