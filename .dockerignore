@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Data and logs
+*.log
+*.sqlite
+*.db
+data/
+logs/
+tmp/
+
+# Models and large files
+*.pkl
+*.h5
+*.bin
+*.pth
+models/
+checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Documentation
+README.md
+docs/
+*.md
