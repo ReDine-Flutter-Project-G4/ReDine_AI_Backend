@@ -33,7 +33,6 @@ ReDine_AI_Backend is a Python-based backend service for AI-powered restaurant re
 
 4. **Run the backend server**
    ```bash
-   cd app
    uvicorn app.main:app --reload
    ```
 
