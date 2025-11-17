@@ -15,14 +15,13 @@ async def detect_ingredients(file: UploadFile = File(...)):
     image_bytes = await file.read()
     image = Image.open(io.BytesIO(image_bytes)).convert("RGB")
 
-    results = model(image)
-    
     ingredients_list = set()
-    for result in results:
-        boxes = result.boxes
-        for box in boxes:
-            cls = int(box.cls[0])
-            class_name = model.names[cls]
+    results = model.predict(image, device="cuda", save=False)
+    
+    for r in results:
+        for box in r.boxes:
+            cls_id = int(box.cls[0])
+            class_name = model.names[cls_id]
             ingredients_list.add(class_name)
 
     return {"detected_ingredients": list(ingredients_list)}
